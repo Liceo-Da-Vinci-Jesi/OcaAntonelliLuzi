@@ -5,7 +5,7 @@ import wx
 
 class Finestra(wx.Frame):
     def __init__(self):
-        super().__init__(None,title="Calcolatrice")
+        super().__init__(None,title="Gioco dell'oca")
         panel = wx.Panel(self)
         bmp = wx.Bitmap("tabellone.jpg")
         panel.SetBackgroundImage(bmp)

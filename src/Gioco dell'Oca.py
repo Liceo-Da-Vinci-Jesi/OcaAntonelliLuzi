@@ -3,6 +3,8 @@
 
 import wx
 import Gioco as g
+import wx.lib.agw.shapedbutton as SB
+
 
 class Scelta(wx.Frame):
     def __init__(self):
@@ -16,17 +18,22 @@ class Scelta(wx.Frame):
         font1 = wx.Font(48, wx.ROMAN, wx.BOLD, wx.NORMAL)
         header.SetFont(font1)
         header.SetBackgroundColour("#53c653")
-
-        self.icona1=wx.ToggleButton(panel,label="Icona 1",pos=(30,120),size=(250,250))
+        
+        bmp1 = wx.Bitmap("Pedina 1.png", wx.BITMAP_TYPE_PNG)
+        bmp2 = wx.Bitmap("Pedina 2.png", wx.BITMAP_TYPE_PNG)
+        bmp3 = wx.Bitmap("Pedina 3.png", wx.BITMAP_TYPE_PNG)
+        bmp4 = wx.Bitmap("Pedina 4.png", wx.BITMAP_TYPE_PNG)
+        
+        self.icona1=wx.BitmapToggleButton(panel,-1,bmp1,pos=(30,120),size=(250,250))
         self.icona1.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome1)
 
-        self.icona2=wx.ToggleButton(panel,label="Icona 2",pos=(350,120),size=(250,250))
+        self.icona2=wx.BitmapToggleButton(panel,-1,bmp2 ,pos=(350,120),size=(250,250))
         self.icona2.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome2)
         
-        self.icona3=wx.ToggleButton(panel,label="Icona 3",pos=(670,120),size=(250,250))
+        self.icona3=wx.BitmapToggleButton(panel,-1, bmp3,pos=(670,120),size=(250,250))
         self.icona3.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome3)
         
-        self.icona4=wx.ToggleButton(panel,label="Icona 4",pos=(990,120),size=(250,250))
+        self.icona4=wx.BitmapToggleButton(panel,-1,bmp4,pos=(990,120),size=(250,250))
         self.icona4.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome4)
         
         self.nome1=wx.TextCtrl(panel,pos=(30,380),size=(200,40))
@@ -275,22 +282,50 @@ class Domanda(wx.Frame):
         panel = wx.Panel(self)
         panel.SetBackgroundColour("#b3ffb3")
         
-#         self.domanda=wx.StaticText(panel,label="• Qual è l'ultima opera che Leopardi compone prima\n   di lasciare Recanati per sempre?",pos=(300,50))
-#         self.risposta1=wx.StaticText(panel,label="☐ Operette morali",pos=(310,90))
-#         self.risposta2=wx.StaticText(panel,label="☐ Grandi idilli",pos=(310,110))
-#         self.risposta3=wx.StaticText(panel,label="☐ Zibaldone",pos=(310,130))
-#         
-#         font3=wx.Font(20, wx.DEFAULT, wx.BOLD, wx.NORMAL)
-#         font4=wx.Font(16, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
-#         
-#         self.domanda.SetFont(font3)
-#         self.risposta1.SetFont(font4)
-#         self.risposta2.SetFont(font4)
-#         self.risposta3.SetFont(font4)
+        
+        
+        linea1 = wx.StaticLine(panel, pos=(276,0), size=(5,450))
+        linea2 = wx.StaticLine(panel, pos=(282,0), size=(5,450))
+        linea1.SetBackgroundColour("#85e085")
+        self.domanda=wx.StaticText(panel,label="- Qual è l'ultima opera che Leopardi compone prima\n   di lasciare Recanati per sempre?",pos=(310,50), size=(300,50))
+        immagine = wx.Bitmap("casaLeopardi.jpeg")
+        viewer = wx.StaticBitmap(panel, bitmap=immagine)
+        
+        self.risposta1 = wx.CheckBox(panel, label="Operette morali", pos=(340,125))
+        self.risposta1.Bind(wx.EVT_CHECKBOX, self.Risposta)
+        
+        self.risposta2 = wx.CheckBox(panel, label="Grandi idilli", pos=(340,150))
+        self.risposta2.Bind(wx.EVT_CHECKBOX, self.Risposta)
+        
+        self.risposta3 = wx.CheckBox(panel, label="Zibaldone", pos=(340,175))
+        self.risposta3.Bind(wx.EVT_CHECKBOX, self.Risposta)
+        
+         
+        font3=wx.Font(10, wx.DEFAULT, wx.BOLD, wx.NORMAL)
+        font4=wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+         
+        self.domanda.SetFont(font3)
+        self.risposta1.SetFont(font4)
+        self.risposta2.SetFont(font4)
+        self.risposta3.SetFont(font4)
         
         self.Centre()
-        self.SetMaxSize((650,450))
-        self.SetMinSize((650,450))
+        self.SetMaxSize((650,447))
+        self.SetMinSize((650,447))
+        
+    def Risposta(self,evt):
+        if self.risposta1.GetValue():
+            self.risposta2.SetValue(False)
+            self.risposta3.SetValue(False)
+        if self.risposta2.GetValue():
+            self.risposta1.SetValue(False)
+            self.risposta3.SetValue(False)
+        if self.risposta3.GetValue():
+            self.risposta2.SetValue(False)
+            self.risposta1.SetValue(False)
+            
+            return
+        
         
     
 
@@ -299,6 +334,8 @@ class Domanda(wx.Frame):
 
 if __name__ == "__main__":
     app = wx.App()
-    window = Scelta()
+    window = Domanda() #qui ci va messo "Scelta" o "Domanda"
     window.Show()
     app.MainLoop()
+    
+    

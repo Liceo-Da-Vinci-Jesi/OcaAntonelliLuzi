@@ -60,6 +60,7 @@ class Scelta(wx.Frame):
         self.text=wx.StaticText(panel,label="",pos=(480,430),size=(200,40))
         
         font2=wx.Font(22, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
+
         
         self.nome1.SetFont(font2)
         self.nome2.SetFont(font2)
@@ -239,7 +240,7 @@ class Tabellone(wx.Frame):
     def __init__(self):
         super().__init__(None,title="Gioco dei paesaggi di Giacomo")
         panel = wx.Panel(self)
-        
+
         header=wx.StaticText(self,label="", size=(1280,20),pos=(0,0))
         header.SetBackgroundColour("#53c653")
         
@@ -299,10 +300,5 @@ class Domanda(wx.Frame):
 if __name__ == "__main__":
     app = wx.App()
     window = Scelta()
-    window.Show()
-    app.MainLoop()
-    
-    app = wx.App()
-    window = Domanda()
     window.Show()
     app.MainLoop()

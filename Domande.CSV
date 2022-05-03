@@ -1,11 +1,57 @@
-Argomento;Difficoltà;Domanda;Riposta A;Risposta B;Risposta C;Risposta giusta
-Recanati;Facile;Quando nasce Leopardi?;1789;1799;1798;1798
-Recanati;Facile;Come avviene la formazione di Leopardi?;Istruito dai precettori e autodidatta;autodidatta;istruito dai precettori;Istruito dai precettori e autodidatta
-Recanati;Normale;Qual era il vero nome di Silvia?;Teresa;Adelaide;Silvia;Teresa
-Recanati;Difficile;Qual è l'ultima opera che compone prima di lasciare Recanati per sempre?;Operette morali;Grandi idilli;Zibaldone;Grandi idilli
-Roma;Difficile;Leopardi durante il suo soggiorno a Roma visita il sepolcro di:;Giulio Cesare;Tasso;Raffaello;Tasso
-Roma;Normale;Che sensazioni dal viaggio a Roma;Amarezza;Spensieratezza;Dolore;Amarezza
-Roma;Normale;;;;;
-Roma;Facile;;;;;
-Operette morali;;;;;;
-Zibaldone;;;;;;
+Argomento,Difficoltà,Domanda,Riposta A,Risposta B,Risposta C,Risposta giusta
+Recanati,Facile,Quando nasce Leopardi?,1789,1799,1798,1798
+Recanati,Facile,Come avviene la formazione di Leopardi?,Istruito dai precettori e autodidatta,autodidatta,istruito dai precettori,Istruito dai precettori e autodidatta
+Recanati,Normale,Qual era il vero nome di Silvia?,Teresa,Adelaide,Silvia,Teresa
+Recanati,Difficile,Qual è l'ultima opera che compone prima di lasciare Recanati per sempre?,Operette morali,Grandi idilli,Zibaldone,Grandi idilli
+Roma,Difficile,Leopardi durante il suo soggiorno a Roma visita il sepolcro di:,Giulio Cesare,Tasso,Raffaello,Tasso
+Roma,Normale,Che sensazioni dal viaggio a Roma,Amarezza,Spensieratezza,Dolore,Amarezza
+Roma,Normale,"Durante il soggiorno a Roma, a quale opera lavora?",La storia dell’astronomia,lo Zibaldone,I quaderni d’infanzia e di adolescenza,lo Zibaldone
+Roma,Facile,Quante volte Leopardi si reca a Roma,3,2,1,2
+Milano,,,,,,
+Milano,,,,,,
+Milano,,,,,,
+Milano,,,,,,
+Firenze,Facile ,In quali anni soggiornò per la prima volta a Firenze,1835-37,1825-27,1815-17,1825-27
+Firenze,Facile,A Firenze nel 1831 Leopardi dedica “agli amici suoi di Toscana”…,i canti,Il risorgimento ,Il ciclo di Aspasia,i canti
+Firenze,Normale,Come definisce la Toscana prima di lasciarla?,"cara,benedetta,sua seconda patria","ladra, maledetta, corrotta",Nessuna delle precedenti ,"cara,benedetta,sua seconda patria"
+Firenze,Difficile,A chi si riferisce Leopardi con “dotta allettatrice”?,A Fanny Targioni Tozzatti,A sua sorella,A Silvia,A Fanny Targioni Tozzatti
+Pisa,Facile,In che anno Leopardi soggiorna a Pisa?,1827-28,1826-27,1828-1829,1827-28
+Pisa,Difficile,Che stagione trascorre Leopardi a Pisa?,inverno,estate,primavera,inverno
+Pisa,Normale,Che cosa inizia a comporre a Pisa?,Grandi idilli,Piccoli idilli,canti Pisano-Fiorentini,Grandi idilli
+Pisa,Normale,Con quale altro nome vengono chiamati i canti Pisano Recanatesi?,Grandi idilli,Piccoli idilli,canti(seconda edizione),Grandi idilli
+Napoli,Facile,Cosa causò la morte di Leopardi?,colera,un malore,cecità,un malore
+Napoli,Difficile,Chi era l’’esule scrittore originario di Napoli giovane amici di Leopardi?,Massimo Ranieri,Pietro Giordano Ranieri,Antonio Ranieri,Antonio Ranieri
+Napoli,Normale,Cosa succede durante il suo soggiorno a Napoli?,scoppia un’epidemia di colera,scoppia un’epidemia di peste,scoppia un’epidemia di vaiolo,scoppia un’epidemia di colera
+Napoli,Facile,Quando muore Leopardi? ,15/06/1835,17/06/1837,14/06/1837,14/06/1837
+Bologna,Difficile,Per quanto tempo Leopardi si ferma a Bologna?,10 giorni ,10 mesi,2 anni,10 giorni 
+Bologna,Facile,Arriva a Bologna in seguito a quale altro soggiorno?,Napoli,Pisa,Milano,Milano
+Bologna,Normale,Come descriverà Bologna nelle sue lettere?,"“raffinata, colta, sofisticata”","“quietissima, allegra, ospitale”","“degradata, tristissima, agitatissima”","“quietissima, allegra, ospitale”"
+Bologna,Facile,In che anno arriva a Bologna Leopardi?,1823,1825,1828,1825
+Canti,Facile,Che tipo di paesaggio si poteva scorgere affacciandosi dal balcone di casa Leopardi?(A Silvia),le vie e gli orti,il mare e le montagne ,entrambe le risposte precedenti,entrambe le risposte precedenti
+Canti,Normale,Che concezione ha Leopardi della natura in “A Silvia”?,la natura come madre benigna che opera al fine di garantire il bene delle sue creature,la natura come una matrigna crudele e indifferente ai dolori degli uomoni,entrambe le risposte precedenti,la natura come una matrigna crudele e indifferente ai dolori degli uomoni
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,
+Canti,,,,,,

@@ -10,6 +10,3 @@ class Giocatore:
     def __str__(self):
         s="Benvenuto/a "+self.nome
         return s
-    
-# class Gioco:
-#     def __init__(self,giocatore)

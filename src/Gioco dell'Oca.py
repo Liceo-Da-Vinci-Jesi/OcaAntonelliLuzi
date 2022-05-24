@@ -19,10 +19,10 @@ class Scelta(wx.Frame):
         header.SetFont(font1)
         header.SetBackgroundColour("#53c653")
         
-        bmp1 = wx.Bitmap("Pedina 1.png", wx.BITMAP_TYPE_PNG)
-        bmp2 = wx.Bitmap("Pedina 2.png", wx.BITMAP_TYPE_PNG)
-        bmp3 = wx.Bitmap("Pedina 3.png", wx.BITMAP_TYPE_PNG)
-        bmp4 = wx.Bitmap("Pedina 4.png", wx.BITMAP_TYPE_PNG)
+        bmp1 = wx.Bitmap("images/Pedina 1.png", wx.BITMAP_TYPE_PNG)
+        bmp2 = wx.Bitmap("images/Pedina 2.png", wx.BITMAP_TYPE_PNG)
+        bmp3 = wx.Bitmap("images/Pedina 3.png", wx.BITMAP_TYPE_PNG)
+        bmp4 = wx.Bitmap("images/Pedina 4.png", wx.BITMAP_TYPE_PNG)
         
         self.icona1=wx.BitmapToggleButton(panel,-1,bmp1,pos=(30,120),size=(250,250))
         self.icona1.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome1)
@@ -273,7 +273,7 @@ class Tabellone(wx.Frame):
             rect = self.GetUpdateRegion().GetBox()
             dc.SetClippingRect(rect)
         dc.Clear()
-        bmp = wx.Bitmap("tabellone.png")
+        bmp = wx.Bitmap("images/tabellone.png")
         dc.DrawBitmap(bmp, 0, 0)
         
 class Domanda(wx.Frame):
@@ -288,7 +288,7 @@ class Domanda(wx.Frame):
         linea2 = wx.StaticLine(panel, pos=(282,0), size=(5,450))
         linea1.SetBackgroundColour("#85e085")
         self.domanda=wx.StaticText(panel,label="- Qual è l'ultima opera che Leopardi compone prima\n   di lasciare Recanati per sempre?",pos=(310,50), size=(300,50))
-        immagine = wx.Bitmap("casaLeopardi.jpeg")
+        immagine = wx.Bitmap("images/casaLeopardi.jpeg")
         viewer = wx.StaticBitmap(panel, bitmap=immagine)
         
         self.risposta1 = wx.CheckBox(panel, label="Operette morali", pos=(340,125))
@@ -323,6 +323,8 @@ class Domanda(wx.Frame):
         if self.risposta3.GetValue():
             self.risposta2.SetValue(False)
             self.risposta1.SetValue(False)
+        
+            
             
             return
         
@@ -334,7 +336,7 @@ class Domanda(wx.Frame):
 
 if __name__ == "__main__":
     app = wx.App()
-    window = Domanda() #qui ci va messo "Scelta" o "Domanda"
+    window = Scelta() #qui ci va messo "Scelta" o "Domanda"
     window.Show()
     app.MainLoop()
     

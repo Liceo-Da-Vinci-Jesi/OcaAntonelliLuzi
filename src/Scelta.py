@@ -1,5 +1,6 @@
 import wx
 import Gioco as g
+import Tabellone as t
 
 
 class Scelta(wx.Frame):
@@ -20,13 +21,18 @@ class Scelta(wx.Frame):
         bmp3 = wx.Bitmap("images/Pedina 3.png", wx.BITMAP_TYPE_PNG)
         bmp4 = wx.Bitmap("images/Pedina 4.png", wx.BITMAP_TYPE_PNG)
         
+        self.bmp1 = wx.Bitmap("images/pedina ridimensionata 1.png", wx.BITMAP_TYPE_PNG)
+        self.bmp2 = wx.Bitmap("images/pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
+        self.bmp3 = wx.Bitmap("images/pedina ridimensionata 3.png", wx.BITMAP_TYPE_PNG)
+        self.bmp4 = wx.Bitmap("images/pedina ridimensionata 4.png", wx.BITMAP_TYPE_PNG)
+        
         self.icona1=wx.BitmapToggleButton(panel,-1,bmp1,pos=(30,120),size=(250,250))
         self.icona1.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome1)
 
         self.icona2=wx.BitmapToggleButton(panel,-1,bmp2 ,pos=(350,120),size=(250,250))
         self.icona2.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome2)
         
-        self.icona3=wx.BitmapToggleButton(panel,-1, bmp3,pos=(670,120),size=(250,250))
+        self.icona3=wx.BitmapToggleButton(panel,-1,bmp3,pos=(670,120),size=(250,250))
         self.icona3.Bind(wx.EVT_TOGGLEBUTTON,self.inseriscinome3)
         
         self.icona4=wx.BitmapToggleButton(panel,-1,bmp4,pos=(990,120),size=(250,250))
@@ -101,9 +107,11 @@ class Scelta(wx.Frame):
         v=self.nome1.GetValue()
         if v != "":
             nome=v
-            icona=""
-            p1=g.Giocatore(nome,icona)
-            s=p1.__str__()
+            icona=self.bmp1
+            pos=(100,95)
+            p=g.Giocatore(nome,icona,pos)
+            t.listaGiocatori.append(p)
+            s=p.__str__()
             self.text.SetLabel(s)
             self.icona1.Disable()
             self.nome1.Disable()
@@ -141,9 +149,11 @@ class Scelta(wx.Frame):
         v=self.nome2.GetValue()
         if v != "":
             nome=v
-            icona=""
-            p2=g.Giocatore(nome,icona)
-            s=p2.__str__()
+            icona=self.bmp2
+            pos=(130,95)
+            p=g.Giocatore(nome,icona,pos)
+            t.listaGiocatori.append(p)
+            s=p.__str__()
             self.text.SetLabel(s)
             self.icona2.Disable()
             self.nome2.Disable()
@@ -234,7 +244,7 @@ class Scelta(wx.Frame):
             
     def start(self,evt):
         self.Close()
-        window = Tabellone()
+        window = t.Tabellone()
         window.Show()
         
 

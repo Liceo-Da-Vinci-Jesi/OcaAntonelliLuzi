@@ -43,7 +43,6 @@ class Tabellone(wx.Frame):
         dc.DrawBitmap(bmp, 0, 0)
         
     def posizione(self,evt):
-        n=len(Caselle.pos1)
         d=random.randint(1,6)
         self.pulsante.SetLabel(str(d))
         for x in range(d):

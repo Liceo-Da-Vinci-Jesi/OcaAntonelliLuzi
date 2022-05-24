@@ -1,9 +1,9 @@
 #Gioco dell'oca classi
 
 class Giocatore:
-    def __init__(self,nome,icona):
+    def __init__(self,nome,icona,posizione):
         self.nome=nome
-        self.posizione=(0,0)
+        self.posizione=posizione
         self.icona=icona
         self.casella=0
         

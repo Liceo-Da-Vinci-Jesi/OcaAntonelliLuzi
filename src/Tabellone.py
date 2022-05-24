@@ -4,12 +4,14 @@ import time
 import random
 import Gioco as g
 
-listaGiocatori=[]
+
 
 class Tabellone(wx.Frame):
     def __init__(self):
         super().__init__(None,title="Gioco dei paesaggi di Giacomo")
         panel = wx.Panel(self)
+        
+        self.listaGiocatori = []
         
         header=wx.StaticText(self,label="", size=(1280,20),pos=(0,0))
         header.SetBackgroundColour("#53c653")
@@ -52,7 +54,7 @@ class Tabellone(wx.Frame):
     def posizione(self,evt):
         d=random.randint(1,6)
         p=self.viewer1
-        giocatore=listaGiocatori[0]
+        giocatore=self.listaGiocatori[0]
         c=giocatore.casella()
         self.pulsante.SetLabel(str(d))
         for x in range(c,c+d):

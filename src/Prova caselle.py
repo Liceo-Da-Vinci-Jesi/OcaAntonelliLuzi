@@ -1,5 +1,7 @@
 import wx
 import Caselle
+import time
+import random
 
 class Tabellone(wx.Frame):
     def __init__(self):
@@ -18,10 +20,10 @@ class Tabellone(wx.Frame):
         header4=wx.StaticText(self,label="", size=(20,780),pos=(1245,0))
         header4.SetBackgroundColour("#53c653")
         
-        self.pedina1=wx.Bitmap("Pedina 1.png")
-        self.viewer = wx.StaticBitmap(self, bitmap=self.pedina1, pos=(100,95))
+        self.pedina1=wx.Bitmap("images/pedina ridimensionata 1.png")
+        self.viewer1 = wx.StaticBitmap(self, bitmap=self.pedina1, pos=(100,95))
         
-        self.pulsante=wx.Button(self,label="Tira dado",size=(800,800),pos=(642,851))
+        self.pulsante=wx.Button(self,label="Tira dado",size=(100,100),pos=(800,400))
         self.pulsante.Bind(wx.EVT_BUTTON,self.posizione)
 
         self.Bind(wx.EVT_ERASE_BACKGROUND, self.OnEraseBackground)
@@ -37,13 +39,16 @@ class Tabellone(wx.Frame):
             rect = self.GetUpdateRegion().GetBox()
             dc.SetClippingRect(rect)
         dc.Clear()
-        bmp = wx.Bitmap("tabellone.png")
+        bmp = wx.Bitmap("images/tabellone.png")
         dc.DrawBitmap(bmp, 0, 0)
         
     def posizione(self,evt):
         n=len(Caselle.pos1)
-        for x in range(n):
-            self.viewer.SetPosition(Caselle.pos1[x])
+        d=random.randint(1,6)
+        self.pulsante.SetLabel(str(d))
+        for x in range(d):
+            self.viewer1.SetPosition(Caselle.pos1[x+1])
+            time.sleep(1)
 # ----------------------------------------
 
 if __name__ == "__main__":

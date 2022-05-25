@@ -1,8 +1,9 @@
 import wx
-import Caselle
+
 import time
 import random
-import Gioco as g
+
+import caselle
 
 
 
@@ -12,6 +13,7 @@ class Tabellone(wx.Frame):
         panel = wx.Panel(self)
         
         self.listaGiocatori = []
+        self.turno = 0
         
         header=wx.StaticText(self,label="", size=(1280,20),pos=(0,0))
         header.SetBackgroundColour("#53c653")
@@ -30,7 +32,6 @@ class Tabellone(wx.Frame):
         self.pedina2=wx.Bitmap("images/pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
         self.viewer2 = wx.StaticBitmap(self, bitmap=self.pedina2,pos=(145,95))
         
-        self.turno=listaGiocatori[0]
         
         self.pulsante=wx.Button(self,label="Tira dado",size=(100,100),pos=(800,400))
         self.pulsante.Bind(wx.EVT_BUTTON,self.posizione)
@@ -53,17 +54,17 @@ class Tabellone(wx.Frame):
         
     def posizione(self,evt):
         d=random.randint(1,6)
+        
+        # PROF: qui c'è da sistemare... servono le liste di questi oggetti. Oppure quattro funzioni che chiamate a seconda del turno
         p=self.viewer1
-        giocatore=self.listaGiocatori[0]
-        c=giocatore.casella()
+        giocatore=self.listaGiocatori[self.turno]
+        c=giocatore.casella
         self.pulsante.SetLabel(str(d))
         for x in range(c,c+d):
-            p.SetPosition(Caselle.pos1[x+1])
+            p.SetPosition(caselle.pos1[x+1])
             time.sleep(1)
-        if self.turno == listaGiocatori[0]:
-            self.turno=listaGiocatori[1]
-            p=self.viewer2
-            giocatore=listaGiocatori[1]
+        self.turno = (self.turno + 1) % len(self.listaGiocatori)
+        
         
 if __name__ == "__main__":
     app = wx.App()

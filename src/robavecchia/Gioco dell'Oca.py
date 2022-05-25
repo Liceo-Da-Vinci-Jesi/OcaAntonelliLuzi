@@ -2,7 +2,7 @@
 #Gioco dell'oca
 
 import wx
-import Gioco as g
+import gioco as g
 import wx.lib.agw.shapedbutton as SB
 
 

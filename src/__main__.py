@@ -1,5 +1,8 @@
-# IL tabellone con cui si gioca
-tab = Tabellone()
+import wx
+from gioco import Gioco
 
-# LA scelta da fare per giocare con QUEL tabellone
-sc = Scelta()
+# ------------------------------------------------------------------
+
+app = wx.App()
+giocoDellOcaDiElisaEMatteo = Gioco()
+app.MainLoop()

@@ -55,3 +55,4 @@ if __name__ == "__main__":
     window = Tabellone()
     window.Show()
     app.MainLoop()
+    

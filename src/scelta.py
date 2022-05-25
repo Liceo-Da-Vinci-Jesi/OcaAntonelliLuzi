@@ -1,6 +1,4 @@
 import wx
-import Gioco as g
-import Tabellone as t
 
 
 class Scelta(wx.Frame):
@@ -49,22 +47,17 @@ class Scelta(wx.Frame):
         
         self.pulsante1=wx.Button(panel,label="✔",pos=(240,380),size=(40,40))
         self.pulsante1.Hide()
-        self.pulsante1.Bind(wx.EVT_BUTTON,self.persona1)
         self.pulsante2=wx.Button(panel,label="✔",pos=(560,380),size=(40,40))
         self.pulsante2.Hide()
-        self.pulsante2.Bind(wx.EVT_BUTTON,self.persona2)
         self.pulsante3=wx.Button(panel,label="✔",pos=(880,380),size=(40,40))
         self.pulsante3.Hide()
-        self.pulsante3.Bind(wx.EVT_BUTTON,self.persona3)
         self.pulsante4=wx.Button(panel,label="✔",pos=(1200,380),size=(40,40))
         self.pulsante4.Hide()
-        self.pulsante4.Bind(wx.EVT_BUTTON,self.persona4)
         
         self.pulsantestart=wx.Button(panel,label="Start",pos=(335,500),size=(600,100))
         self.pulsantestart.SetFont(font1)
         self.pulsantestart.SetBackgroundColour("#53c653")
         self.pulsantestart.Hide()
-        self.pulsantestart.Bind(wx.EVT_BUTTON,self.start)
         
         self.text=wx.StaticText(panel,label="",pos=(480,430),size=(200,40))
         
@@ -102,27 +95,7 @@ class Scelta(wx.Frame):
         else:
             self.nome1.Hide()
             self.pulsante1.Hide()
-            
-    def persona1(self,evt):
-        v=self.nome1.GetValue()
-        if v != "":
-            nome=v
-            icona=self.bmp1
-            pos=(100,95)
-            p=g.Giocatore(nome,icona,pos)
-            t.listaGiocatori.append(p)
-            s=p.__str__()
-            self.text.SetLabel(s)
-            self.icona1.Disable()
-            self.nome1.Disable()
-            self.pulsante1.Disable()
-            self.conta+=1
-            if self.conta >= 2:
-                self.pulsantestart.Show()
-        else:
-            self.text.SetLabel("Non hai inserito il nome!")
-        
-            
+                        
     def inseriscinome2(self,evt):
         v=self.icona2.GetValue()
         self.icona1.SetValue(False)
@@ -145,24 +118,6 @@ class Scelta(wx.Frame):
             self.nome2.Hide()
             self.pulsante2.Hide()
             
-    def persona2(self,evt):
-        v=self.nome2.GetValue()
-        if v != "":
-            nome=v
-            icona=self.bmp2
-            pos=(130,95)
-            p=g.Giocatore(nome,icona,pos)
-            t.listaGiocatori.append(p)
-            s=p.__str__()
-            self.text.SetLabel(s)
-            self.icona2.Disable()
-            self.nome2.Disable()
-            self.pulsante2.Disable()
-            self.conta+=1
-            if self.conta >= 2:
-                self.pulsantestart.Show()
-        else:
-            self.text.SetLabel("Non hai inserito il nome!")
             
     def inseriscinome3(self,evt):
         v=self.icona3.GetValue()
@@ -186,22 +141,6 @@ class Scelta(wx.Frame):
             self.nome3.Hide()
             self.pulsante3.Hide()
             
-    def persona3(self,evt):
-        v=self.nome3.GetValue()
-        if v != "":
-            nome=v
-            icona=""
-            p3=g.Giocatore(nome,icona)
-            s=p3.__str__()
-            self.text.SetLabel(s)
-            self.icona3.Disable()
-            self.nome3.Disable()
-            self.pulsante3.Disable()
-            self.conta+=1
-            if self.conta >= 2:
-                self.pulsantestart.Show()
-        else:
-            self.text.SetLabel("Non hai inserito il nome!")
             
     def inseriscinome4(self,evt):
         v=self.icona4.GetValue()
@@ -224,28 +163,6 @@ class Scelta(wx.Frame):
         else:
             self.nome4.Hide()
             self.pulsante4.Hide()
-            
-    def persona4(self,evt):
-        v=self.nome4.GetValue()
-        if v != "":
-            nome=v
-            icona=""
-            p4=g.Giocatore(nome,icona)
-            s=p4.__str__()
-            self.text.SetLabel(s)
-            self.icona4.Disable()
-            self.nome4.Disable()
-            self.pulsante4.Disable()
-            self.conta+=1
-            if self.conta >= 2:
-                self.pulsantestart.Show()
-        else:
-            self.text.SetLabel("Non hai inserito il nome!")
-            
-    def start(self,evt):
-        self.Close()
-        window = t.Tabellone()
-        window.Show()
         
 
 if __name__ == "__main__":

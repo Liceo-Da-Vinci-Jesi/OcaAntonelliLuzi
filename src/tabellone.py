@@ -31,6 +31,10 @@ class Tabellone(wx.Frame):
         self.viewer1 = wx.StaticBitmap(self, bitmap=self.pedina1,pos=(100,95))
         self.pedina2=wx.Bitmap("images/pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
         self.viewer2 = wx.StaticBitmap(self, bitmap=self.pedina2,pos=(145,95))
+        self.pedina3=wx.Bitmap("images/pedina ridimensionata 3.png", wx.BITMAP_TYPE_PNG)
+        self.viewer3 = wx.StaticBitmap(self, bitmap=self.pedina1,pos=(100,140))
+        self.pedina4=wx.Bitmap("images/pedina ridimensionata 4.png", wx.BITMAP_TYPE_PNG)
+        self.viewer4 = wx.StaticBitmap(self, bitmap=self.pedina2,pos=(145,140))
         
         
         self.pulsante=wx.Button(self,label="Tira dado",size=(100,100),pos=(800,400))

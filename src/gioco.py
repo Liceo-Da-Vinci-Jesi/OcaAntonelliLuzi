@@ -14,6 +14,8 @@ class Gioco:
         self.schermataIniziale = Scelta()
         self.schermataIniziale.pulsante1.Bind(wx.EVT_BUTTON,self.persona1)
         self.schermataIniziale.pulsante2.Bind(wx.EVT_BUTTON,self.persona2)
+        self.schermataIniziale.pulsante3.Bind(wx.EVT_BUTTON,self.persona3)
+        self.schermataIniziale.pulsante4.Bind(wx.EVT_BUTTON,self.persona4)
         self.schermataIniziale.pulsantestart.Bind(wx.EVT_BUTTON,self.start)
 
         self.tabellone = Tabellone()
@@ -52,6 +54,44 @@ class Gioco:
             self.schermataIniziale.icona2.Disable()
             self.schermataIniziale.nome2.Disable()
             self.schermataIniziale.pulsante2.Disable()
+            self.schermataIniziale.conta += 1
+            if self.schermataIniziale.conta >= 2:
+                self.schermataIniziale.pulsantestart.Show()
+        else:
+            self.schermataIniziale.text.SetLabel("Non hai inserito il nome!")
+            
+    def persona3(self,evt):
+        v = self.schermataIniziale.nome3.GetValue()
+        if v != "":
+            nome=v
+            icona=self.schermataIniziale.bmp3
+            pos=(100,140)
+            giocatore3 = Giocatore(nome,icona,pos)
+            self.listaGiocatori.append(giocatore3)
+            
+            self.schermataIniziale.text.SetLabel("Benvenuto " + nome)
+            self.schermataIniziale.icona3.Disable()
+            self.schermataIniziale.nome3.Disable()
+            self.schermataIniziale.pulsante3.Disable()
+            self.schermataIniziale.conta += 1
+            if self.schermataIniziale.conta >= 2:
+                self.schermataIniziale.pulsantestart.Show()
+        else:
+            self.schermataIniziale.text.SetLabel("Non hai inserito il nome!")
+            
+    def persona4(self,evt):
+        v = self.schermataIniziale.nome4.GetValue()
+        if v != "":
+            nome=v
+            icona=self.schermataIniziale.bmp4
+            pos=(130,140)
+            giocatore4 = Giocatore(nome,icona,pos)
+            self.listaGiocatori.append(giocatore4)
+            
+            self.schermataIniziale.text.SetLabel("Benvenuto " + nome)
+            self.schermataIniziale.icona4.Disable()
+            self.schermataIniziale.nome4.Disable()
+            self.schermataIniziale.pulsante4.Disable()
             self.schermataIniziale.conta += 1
             if self.schermataIniziale.conta >= 2:
                 self.schermataIniziale.pulsantestart.Show()

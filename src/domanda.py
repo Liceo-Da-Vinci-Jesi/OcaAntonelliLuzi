@@ -1,5 +1,5 @@
 import wx
-
+import csv
 
 class Domanda(wx.Frame):
     def __init__(self):
@@ -74,3 +74,9 @@ class Domanda(wx.Frame):
     
     def risposta(self,evt):
         return
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 import wx
-import Caselle
+import caselle
 import time
 import random
 
@@ -43,11 +43,10 @@ class Tabellone(wx.Frame):
         dc.DrawBitmap(bmp, 0, 0)
         
     def posizione(self,evt):
-        d=random.randint(1,6)
-        self.pulsante.SetLabel(str(d))
-        for x in range(d):
-            self.viewer1.SetPosition(Caselle.pos1[x+1])
+        for x in caselle.pos1:
+            self.viewer1.SetPosition(caselle.pos1[x+1])
             time.sleep(1)
+        
 # ----------------------------------------
 
 if __name__ == "__main__":

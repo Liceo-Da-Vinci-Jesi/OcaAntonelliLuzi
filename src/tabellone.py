@@ -4,6 +4,7 @@ import time
 import random
 
 import caselle
+from domanda import Domanda
 
 
 
@@ -14,6 +15,8 @@ class Tabellone(wx.Frame):
         
         self.listaGiocatori = []
         self.turno = 0
+        
+        self.domanda=Domanda()
         
         header=wx.StaticText(self,label="", size=(1280,20),pos=(0,0))
         header.SetBackgroundColour("#53c653")
@@ -41,12 +44,12 @@ class Tabellone(wx.Frame):
 
         self.Bind(wx.EVT_ERASE_BACKGROUND, self.OnEraseBackground)
         self.Centre()
-        self.pedine()
         self.SetMaxSize((1280,780))
         self.SetMinSize((1280,780))
     
     def OnEraseBackground(self, evt):
         dc = evt.GetDC()
+        self.pedine()
                 
         if not dc:
             dc = wx.ClientDC(self)
@@ -72,45 +75,94 @@ class Tabellone(wx.Frame):
         self.numeroGiocatori=len(self.listaGiocatori)
         if self.turno < self.numeroGiocatori:
             if self.turno==0:
-                giocatore=self.listaGiocatori[0]
-                c=giocatore.casella
+                self.giocatore=self.listaGiocatori[0]
+                c=self.giocatore.casella
                 p=self.viewer1
                 self.turno+=1
                 for x in range(c,c+d):
                     p.SetPosition(caselle.pos1[x+1])
                     time.sleep(1)
-                    (giocatore.casella)+=1
+                    (self.giocatore.casella)+=1
+                self.controllo()
                 return
             if self.turno==1:
-                giocatore=self.listaGiocatori[1]
-                c=giocatore.casella
+                self.giocatore=self.listaGiocatori[1]
+                c=self.giocatore.casella
                 p=self.viewer2
                 self.turno+=1
                 for x in range(c,c+d):
                     p.SetPosition(caselle.pos2[x+1])
                     time.sleep(1)
-                    (giocatore.casella)+=1
+                    (self.giocatore.casella)+=1
+                self.controllo()
                 return
             if self.turno==2:
-                giocatore=self.listaGiocatori[2]
-                c=giocatore.casella
+                self.giocatore=self.listaGiocatori[2]
+                c=self.giocatore.casella
                 p=self.viewer3
                 self.turno+=1
                 for x in range(c,c+d):
                     p.SetPosition(caselle.pos3[x+1])
                     time.sleep(1)
-                    (giocatore.casella)+=1
+                    (self.giocatore.casella)+=1
+                self.controllo()
                 return
             if self.turno==3:
-                giocatore=self.listaGiocatori[3]
-                c=giocatore.casella
+                self.giocatore=self.listaGiocatori[3]
+                c=self.giocatore.casella
                 p=self.viewer4
                 self.turno+=1
                 for x in range(c,c+d):
                     p.SetPosition(caselle.pos4[x+1])
                     time.sleep(1)
-                    (giocatore.casella)+=1
+                    (self.giocatore.casella)+=1
+                self.controllo()
                 return
+    
+    def controllo(self):
+        c=self.giocatore.casella
+        if c in caselle.listaBiografia:
+            if c==1:
+                print("Recanati")
+                return
+            if c==8:
+                print("Roma")
+                return
+            if c==14:
+                print("Milano")
+                return
+            if c==21:
+                print("Bologna")
+                return
+            if c==27:
+                print("Firenze")
+                return
+            if c==33:
+                print("Pisa")
+                return
+            if c==39:
+                print("Napoli")
+                return
+        if c in caselle.listaInfinito:
+            print("Infinito")
+            return
+        if c in caselle.listaCanti:
+            self.domanda.Show()
+            return
+        if c in caselle.listaOperette:
+            print("Operette")
+            return
+        if c in caselle.listaZibaldone:
+            print("Zibaldone")
+            return
+        if c in caselle.listaSiepe:
+            print("Siepe")
+            return
+        else:
+            print("Niente")
+            return
+            
+        
         
 if __name__ == "__main__":
     app = wx.App()

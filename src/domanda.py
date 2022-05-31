@@ -16,16 +16,16 @@ class Domanda(wx.Frame):
         immagine = wx.Bitmap("images/casaLeopardi.jpeg")
         viewer = wx.StaticBitmap(panel, bitmap=immagine)
         
-        self.risposta1 = wx.CheckBox(panel, label="Operette morali", pos=(340,125))
+        self.risposta1 = wx.CheckBox(panel, label="", pos=(320,125), size=(250,12))
         self.risposta1.Bind(wx.EVT_CHECKBOX, self.Risposta1)
         
-        self.risposta2 = wx.CheckBox(panel, label="Grandi idilli", pos=(340,150))
+        self.risposta2 = wx.CheckBox(panel, label="", pos=(320,150),size=(250,12))
         self.risposta2.Bind(wx.EVT_CHECKBOX, self.Risposta2)
         
-        self.risposta3 = wx.CheckBox(panel, label="Zibaldone", pos=(340,175))
+        self.risposta3 = wx.CheckBox(panel, label="", pos=(320,175),size=(250,12))
         self.risposta3.Bind(wx.EVT_CHECKBOX, self.Risposta3)
         
-        self.conferma=wx.Button(panel,label="Conferma",pos=(550,370),size=(80,20))
+        self.conferma=wx.Button(panel,label="Conferma",pos=(550,375),size=(80,20))
         self.conferma.Hide()
         self.conferma.Bind(wx.EVT_BUTTON,self.risposta)
         

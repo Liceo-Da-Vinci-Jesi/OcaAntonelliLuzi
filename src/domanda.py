@@ -1,6 +1,8 @@
 import wx
 import csv
 
+import ElencoDomande
+
 class Domanda(wx.Frame):
     def __init__(self):
         super().__init__(None,title="Domanda")
@@ -28,6 +30,9 @@ class Domanda(wx.Frame):
         self.conferma=wx.Button(panel,label="Conferma",pos=(550,375),size=(80,20))
         self.conferma.Hide()
         self.conferma.Bind(wx.EVT_BUTTON,self.risposta)
+        
+        self.giusta=wx.StaticText(panel,label="")
+        self.giusta.Hide()
         
          
         font3=wx.Font(10, wx.DEFAULT, wx.BOLD, wx.NORMAL)
@@ -73,6 +78,21 @@ class Domanda(wx.Frame):
         return
     
     def risposta(self,evt):
+        risp=""
+        if self.risposta1.GetValue() == True:
+            risp=self.risposta1.GetLabel()
+        if self.risposta2.GetValue() == True:
+            risp=self.risposta2.GetLabel()
+        if self.risposta3.GetValue() == True:
+            risp=self.risposta3.GetLabel()
+        if risp != self.giusta.GetLabel():
+            dial = wx.MessageDialog(None, "Risposta errata!", "Errore", wx.OK | wx.ICON_ERROR)
+            dial.ShowModal()
+            self.Close()
+        if risp == self.giusta.GetLabel():
+            dial = wx.MessageDialog(None, "Risposta giusta!", "Errore", wx.OK | wx.ART_TICK_MARK)
+            dial.ShowModal()
+            self.Close() 
         return
 
 

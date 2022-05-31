@@ -31,13 +31,13 @@ class Tabellone(wx.Frame):
         header4=wx.StaticText(self,label="", size=(20,780),pos=(1245,0))
         header4.SetBackgroundColour("#53c653")
         
-        self.pedina1=wx.Bitmap("pedina ridimensionata 1.png", wx.BITMAP_TYPE_PNG)
+        self.pedina1=wx.Bitmap("images/pedina ridimensionata 1.png", wx.BITMAP_TYPE_PNG)
         self.viewer1 = wx.StaticBitmap(self, bitmap=self.pedina1,pos=(100,95))
-        self.pedina2=wx.Bitmap("pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
+        self.pedina2=wx.Bitmap("images/pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
         self.viewer2 = wx.StaticBitmap(self, bitmap=self.pedina2,pos=(145,95))
-        self.pedina3=wx.Bitmap("pedina ridimensionata 3.png", wx.BITMAP_TYPE_PNG)
+        self.pedina3=wx.Bitmap("images/pedina ridimensionata 3.png", wx.BITMAP_TYPE_PNG)
         self.viewer3 = wx.StaticBitmap(self, bitmap=self.pedina3,pos=(100,140))
-        self.pedina4=wx.Bitmap("pedina ridimensionata 4.png", wx.BITMAP_TYPE_PNG)
+        self.pedina4=wx.Bitmap("images/pedina ridimensionata 4.png", wx.BITMAP_TYPE_PNG)
         self.viewer4 = wx.StaticBitmap(self, bitmap=self.pedina4,pos=(145,140))
         
         self.pulsante=wx.Button(self,label="Tira dado",size=(100,100),pos=(800,400))
@@ -51,13 +51,14 @@ class Tabellone(wx.Frame):
     def OnEraseBackground(self, evt):
         dc = evt.GetDC()
         self.pedine()
+        ElencoDomande.load()
                 
         if not dc:
             dc = wx.ClientDC(self)
             rect = self.GetUpdateRegion().GetBox()
             dc.SetClippingRect(rect)
         dc.Clear()
-        bmp = wx.Bitmap("tabellone.png")
+        bmp = wx.Bitmap("images/tabellone.png")
         dc.DrawBitmap(bmp, 0, 0)
     
     def pedine(self):
@@ -124,48 +125,133 @@ class Tabellone(wx.Frame):
         c=self.giocatore.casella
         if c in caselle.listaBiografia:
             if c==1:
-                ElencoDomande.load()
-                n=random.randint(1,4)
-                domandaEstratta=prova.domandeRecanati[n]
+                m=len(domandeRecanati)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandeRecanati[n]
                 self.domanda.Show()
                 self.domanda.d.SetValue(domandaEstratta["Domanda"])
                 self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandeRecanati.remove(domandaEstratta)
+                return
             if c==8:
-                ElencoDomande.load()
-                n=random.randint(1,4)
-                domandaEstratta=prova.domandeRoma[n]
+                m=len(domandeRoma)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandeRoma[n]
                 self.domanda.Show()
                 self.domanda.d.SetValue(domandaEstratta["Domanda"])
                 self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandeRoma.remove(domandaEstratta)
                 return
             if c==14:
-                print("Milano")
+                m=len(domandeMilano)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandeMilano[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandeMilano.remove(domandaEstratta)
                 return
             if c==21:
-                print("Bologna")
+                m=len(domandeBologna)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandeBologna[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandeBologna.remove(domandaEstratta)
                 return
             if c==27:
-                print("Firenze")
+                m=len(domandeFirenze)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandeFirenze[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandeFirenze.remove(domandaEstratta)
                 return
             if c==33:
-                print("Pisa")
+                m=len(domandePisa)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandePisa[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandePisa.remove(domandaEstratta)
                 return
             if c==39:
-                print("Napoli")
+                m=len(domandeNapoli)
+                n=random.randint(1,m)
+                domandaEstratta=ElencoDomande.domandeNapoli[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+                self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+                domandeNapoli.remove(domandaEstratta)
                 return
         if c in caselle.listaInfinito:
+            self.giocatore.punteggio+=50
             return
         if c in caselle.listaCanti:
+            m=len(domandeCanti)
+            n=random.randint(1,m)
+            domandaEstratta=ElencoDomande.domandeCanti[n]
+            self.domanda.Show()
+            self.domanda.d.SetValue(domandaEstratta["Domanda"])
+            self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+            self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+            self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+            self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+            domandeCanti.remove(domandaEstratta)
             return
         if c in caselle.listaOperette:
+            m=len(domandeOperette)
+            n=random.randint(1,m)
+            domandaEstratta=ElencoDomande.domandeOperette[n]
+            self.domanda.Show()
+            self.domanda.d.SetValue(domandaEstratta["Domanda"])
+            self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+            self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+            self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+            self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+            domandeOperette.remove(domandaEstratta)
             return
         if c in caselle.listaZibaldone:
+            m=len(domandeZibaldone)
+            n=random.randint(1,m)
+            domandaEstratta=ElencoDomande.domandeZibaldone[n]
+            self.domanda.Show()
+            self.domanda.d.SetValue(domandaEstratta["Domanda"])
+            self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+            self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+            self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
+            self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
+            domandeZibaldone.remove(domandaEstratta)
             return
         if c in caselle.listaSiepe:
+            if self.giocatore.punteggio < 50:
+                self.giocatore.punteggio = 0
+            else:
+                self.giocatore.punteggio-=50
             return
         else:
             return

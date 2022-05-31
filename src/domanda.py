@@ -12,7 +12,7 @@ class Domanda(wx.Frame):
         linea1 = wx.StaticLine(panel, pos=(276,0), size=(5,450))
         linea2 = wx.StaticLine(panel, pos=(282,0), size=(5,450))
         linea1.SetBackgroundColour("#85e085")
-        self.domanda=wx.StaticText(panel,label="- Qual è l'ultima opera che Leopardi compone prima\n   di lasciare Recanati per sempre?",pos=(310,50), size=(300,50))
+        self.d=wx.TextCtrl(panel,style=wx.TE_MULTILINE|wx.TE_READONLY,pos=(310,50), size=(300,50))
         immagine = wx.Bitmap("images/casaLeopardi.jpeg")
         viewer = wx.StaticBitmap(panel, bitmap=immagine)
         
@@ -33,7 +33,7 @@ class Domanda(wx.Frame):
         font3=wx.Font(10, wx.DEFAULT, wx.BOLD, wx.NORMAL)
         font4=wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
          
-        self.domanda.SetFont(font3)
+        self.d.SetFont(font3)
         self.risposta1.SetFont(font4)
         self.risposta2.SetFont(font4)
         self.risposta3.SetFont(font4)

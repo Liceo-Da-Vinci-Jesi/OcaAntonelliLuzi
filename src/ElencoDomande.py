@@ -1,14 +1,18 @@
 import csv
 
+domandeRecanati=[]
+domandeRoma=[]
+
 def load():
-    file = open( "domande.csv" , "r")
-    lettore = csv.DictReader(file,delimiter = " ")
-    domandeCanti=[]
+    file=open("domande.csv")
+    lettore=csv.DictReader(file,delimiter="/")
+
     for riga in lettore:
-        if riga["Argomento"] == "Canti":
-            print(riga)
+        if riga["Argomento"] == "Recanati":
+            domandeRecanati.append(riga)
+        if riga["Argomento"] == "Roma":
+            domandeRoma.append(riga)
+        
     file.close()
     
-    return
-
 load()

@@ -5,6 +5,7 @@ import random
 
 import caselle
 from domanda import Domanda
+import ElencoDomande
 
 
 
@@ -30,13 +31,13 @@ class Tabellone(wx.Frame):
         header4=wx.StaticText(self,label="", size=(20,780),pos=(1245,0))
         header4.SetBackgroundColour("#53c653")
         
-        self.pedina1=wx.Bitmap("images/pedina ridimensionata 1.png", wx.BITMAP_TYPE_PNG)
+        self.pedina1=wx.Bitmap("pedina ridimensionata 1.png", wx.BITMAP_TYPE_PNG)
         self.viewer1 = wx.StaticBitmap(self, bitmap=self.pedina1,pos=(100,95))
-        self.pedina2=wx.Bitmap("images/pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
+        self.pedina2=wx.Bitmap("pedina ridimensionata 2.png", wx.BITMAP_TYPE_PNG)
         self.viewer2 = wx.StaticBitmap(self, bitmap=self.pedina2,pos=(145,95))
-        self.pedina3=wx.Bitmap("images/pedina ridimensionata 3.png", wx.BITMAP_TYPE_PNG)
+        self.pedina3=wx.Bitmap("pedina ridimensionata 3.png", wx.BITMAP_TYPE_PNG)
         self.viewer3 = wx.StaticBitmap(self, bitmap=self.pedina3,pos=(100,140))
-        self.pedina4=wx.Bitmap("images/pedina ridimensionata 4.png", wx.BITMAP_TYPE_PNG)
+        self.pedina4=wx.Bitmap("pedina ridimensionata 4.png", wx.BITMAP_TYPE_PNG)
         self.viewer4 = wx.StaticBitmap(self, bitmap=self.pedina4,pos=(145,140))
         
         self.pulsante=wx.Button(self,label="Tira dado",size=(100,100),pos=(800,400))
@@ -56,7 +57,7 @@ class Tabellone(wx.Frame):
             rect = self.GetUpdateRegion().GetBox()
             dc.SetClippingRect(rect)
         dc.Clear()
-        bmp = wx.Bitmap("images/tabellone.png")
+        bmp = wx.Bitmap("tabellone.png")
         dc.DrawBitmap(bmp, 0, 0)
     
     def pedine(self):
@@ -123,10 +124,23 @@ class Tabellone(wx.Frame):
         c=self.giocatore.casella
         if c in caselle.listaBiografia:
             if c==1:
-                print("Recanati")
-                return
+                ElencoDomande.load()
+                n=random.randint(1,4)
+                domandaEstratta=prova.domandeRecanati[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
             if c==8:
-                print("Roma")
+                ElencoDomande.load()
+                n=random.randint(1,4)
+                domandaEstratta=prova.domandeRoma[n]
+                self.domanda.Show()
+                self.domanda.d.SetValue(domandaEstratta["Domanda"])
+                self.domanda.risposta1.SetLabel(domandaEstratta["Risposta a"])
+                self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
+                self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 return
             if c==14:
                 print("Milano")
@@ -144,22 +158,16 @@ class Tabellone(wx.Frame):
                 print("Napoli")
                 return
         if c in caselle.listaInfinito:
-            print("Infinito")
             return
         if c in caselle.listaCanti:
-            self.domanda.Show()
             return
         if c in caselle.listaOperette:
-            print("Operette")
             return
         if c in caselle.listaZibaldone:
-            print("Zibaldone")
             return
         if c in caselle.listaSiepe:
-            print("Siepe")
             return
         else:
-            print("Niente")
             return
             
         

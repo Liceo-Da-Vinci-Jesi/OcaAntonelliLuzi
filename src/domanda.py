@@ -1,15 +1,16 @@
 import wx
 import csv
 
-import ElencoDomande
-
 import random
 
 class Domanda(wx.Frame):
-    def __init__(self):
+    def __init__(self,giocatore):
         super().__init__(None,title="Domanda")
         panel = wx.Panel(self)
         panel.SetBackgroundColour("#b3ffb3")
+        
+        self.giocatore=giocatore
+        self.punteggio=0
         
         linea1 = wx.StaticLine(panel, pos=(276,0), size=(5,450))
         linea2 = wx.StaticLine(panel, pos=(282,0), size=(5,450))
@@ -92,10 +93,9 @@ class Domanda(wx.Frame):
         
         dial = wx.MessageDialog(None, "Risposta giusta!", "Non errore", wx.OK)
         dial.ShowModal()
+        self.giocatore.punteggio += self.punteggio
         self.Close()
         return
-
-
 
 
 

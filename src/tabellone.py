@@ -6,9 +6,6 @@ import random
 import caselle
 from domanda import Domanda
 import ElencoDomande
-import domanda
-
-
 
 class Tabellone(wx.Frame):
     def __init__(self):
@@ -61,6 +58,7 @@ class Tabellone(wx.Frame):
     def OnEraseBackground(self, evt):
         dc = evt.GetDC()
         self.pedine()
+        self.punteggi()
                 
         if not dc:
             dc = wx.ClientDC(self)
@@ -96,7 +94,6 @@ class Tabellone(wx.Frame):
                     (self.giocatore.casella)+=1
                     self.punteggi()
                 self.controllo()
-                self.punteggi()
                 return
             if self.turno==1:
                 self.giocatore=self.listaGiocatori[1]
@@ -109,7 +106,6 @@ class Tabellone(wx.Frame):
                     (self.giocatore.casella)+=1
                     self.punteggi()
                 self.controllo()
-                self.punteggi()
                 return
             if self.turno==2:
                 self.giocatore=self.listaGiocatori[2]
@@ -122,7 +118,6 @@ class Tabellone(wx.Frame):
                     (self.giocatore.casella)+=1
                     self.punteggi()
                 self.controllo()
-                self.punteggi()
                 return
             if self.turno==3:
                 self.giocatore=self.listaGiocatori[3]
@@ -135,11 +130,11 @@ class Tabellone(wx.Frame):
                     (self.giocatore.casella)+=1
                     self.punteggi()
                 self.controllo()
-                self.punteggi()
                 return
     
     def controllo(self):
-        self.domanda=Domanda()
+        giocatore=self.giocatore
+        self.domanda=Domanda(giocatore)
         c=self.giocatore.casella
         if c in caselle.listaBiografia:
             if c==1:
@@ -153,6 +148,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandeRecanati.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
             if c==8:
                 m=len(ElencoDomande.domandeRoma)
@@ -165,6 +161,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandeRoma.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
             if c==14:
                 m=len(ElencoDomande.domandeMilano)
@@ -177,6 +174,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandeMilano.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
             if c==21:
                 m=len(ElencoDomande.domandeBologna)
@@ -189,6 +187,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandeBologna.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
             if c==27:
                 m=len(ElencoDomande.domandeFirenze)
@@ -201,6 +200,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandeFirenze.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
             if c==33:
                 m=len(ElencoDomande.domandePisa)
@@ -213,6 +213,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandePisa.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
             if c==39:
                 m=len(ElencoDomande.domandeNapoli)
@@ -225,6 +226,7 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
                 ElencoDomande.domandeNapoli.remove(self.domandaEstratta)
+                self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
                 return
         if c in caselle.listaInfinito:
             self.giocatore.punteggio+=50
@@ -240,6 +242,7 @@ class Tabellone(wx.Frame):
             self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
             self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
             ElencoDomande.domandeCanti.remove(self.domandaEstratta)
+            self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
             return
         if c in caselle.listaOperette:
             m=len(ElencoDomande.domandeOperette)
@@ -252,6 +255,7 @@ class Tabellone(wx.Frame):
             self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
             self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
             ElencoDomande.domandeOperette.remove(self.domandaEstratta)
+            self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
             return
         if c in caselle.listaZibaldone:
             m=len(ElencoDomande.domandeZibaldone)
@@ -264,6 +268,7 @@ class Tabellone(wx.Frame):
             self.domanda.risposta3.SetLabel(self.domandaEstratta["Risposta c"])
             self.domanda.giusta.SetLabel(self.domandaEstratta["Risposta giusta"])
             ElencoDomande.domandeZibaldone.remove(self.domandaEstratta)
+            self.domanda.punteggio+=int(self.domandaEstratta["Punteggio"])
             return
         if c in caselle.listaSiepe:
             if self.giocatore.punteggio < 50:

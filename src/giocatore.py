@@ -9,5 +9,5 @@ class Giocatore:
         self.punteggio=0
         
     def __str__(self):
-        s = "Giocatore di nome " + self.nome + " con posizione " + str(self.posizione) + ", con icona " + self.icona + " e nella casella " + str(self.casella)
+        s = "Benvenuto " + self.nome #" con posizione " + str(self.posizione) + ", con icona " + self.icona + " e nella casella " + str(self.casella)
         return s

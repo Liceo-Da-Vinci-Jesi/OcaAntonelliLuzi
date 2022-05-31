@@ -38,4 +38,3 @@ def load():
             domandeZibaldone.append(riga)
         
     file.close()
-    

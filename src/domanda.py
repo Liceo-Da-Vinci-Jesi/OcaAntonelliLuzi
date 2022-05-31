@@ -3,13 +3,13 @@ import csv
 
 import ElencoDomande
 
+import random
+
 class Domanda(wx.Frame):
     def __init__(self):
         super().__init__(None,title="Domanda")
         panel = wx.Panel(self)
         panel.SetBackgroundColour("#b3ffb3")
-        
-        
         
         linea1 = wx.StaticLine(panel, pos=(276,0), size=(5,450))
         linea2 = wx.StaticLine(panel, pos=(282,0), size=(5,450))
@@ -18,13 +18,13 @@ class Domanda(wx.Frame):
         immagine = wx.Bitmap("images/casaLeopardi.jpeg")
         viewer = wx.StaticBitmap(panel, bitmap=immagine)
         
-        self.risposta1 = wx.CheckBox(panel, label="", pos=(320,125), size=(250,12))
+        self.risposta1 = wx.CheckBox(panel, label="", pos=(320,125), size=(250,40))
         self.risposta1.Bind(wx.EVT_CHECKBOX, self.Risposta1)
         
-        self.risposta2 = wx.CheckBox(panel, label="", pos=(320,150),size=(250,12))
+        self.risposta2 = wx.CheckBox(panel, label="", pos=(320,170),size=(250,40))
         self.risposta2.Bind(wx.EVT_CHECKBOX, self.Risposta2)
         
-        self.risposta3 = wx.CheckBox(panel, label="", pos=(320,175),size=(250,12))
+        self.risposta3 = wx.CheckBox(panel, label="", pos=(320,215),size=(250,40))
         self.risposta3.Bind(wx.EVT_CHECKBOX, self.Risposta3)
         
         self.conferma=wx.Button(panel,label="Conferma",pos=(550,375),size=(80,20))
@@ -33,7 +33,6 @@ class Domanda(wx.Frame):
         
         self.giusta=wx.StaticText(panel,label="")
         self.giusta.Hide()
-        
          
         font3=wx.Font(10, wx.DEFAULT, wx.BOLD, wx.NORMAL)
         font4=wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL)
@@ -92,7 +91,7 @@ class Domanda(wx.Frame):
             return
         
         dial = wx.MessageDialog(None, "Risposta giusta!", "Non errore", wx.OK)
-        dial.ShowModal() 
+        dial.ShowModal()
         self.Close()
         return
 

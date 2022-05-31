@@ -87,12 +87,13 @@ class Domanda(wx.Frame):
             risp=self.risposta3.GetLabel()
         if risp != self.giusta.GetLabel():
             dial = wx.MessageDialog(None, "Risposta errata!", "Errore", wx.OK | wx.ICON_ERROR)
-            dial.ShowModal()
+            r = dial.ShowModal()
             self.Close()
-        if risp == self.giusta.GetLabel():
-            dial = wx.MessageDialog(None, "Risposta giusta!", "Errore", wx.OK | wx.ART_TICK_MARK)
-            dial.ShowModal()
-            self.Close() 
+            return
+        
+        dial = wx.MessageDialog(None, "Risposta giusta!", "Non errore", wx.OK)
+        dial.ShowModal() 
+        self.Close()
         return
 
 

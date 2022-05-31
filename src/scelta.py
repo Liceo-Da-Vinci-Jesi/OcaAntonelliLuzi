@@ -89,6 +89,7 @@ class Scelta(wx.Frame):
         self.pulsante3.Hide()
         self.pulsante4.Hide()
         self.text.SetLabel("")
+        self.nome1.SetFocus()
         if v == True:
             self.nome1.Show()
             self.pulsante1.Show()
@@ -111,6 +112,7 @@ class Scelta(wx.Frame):
         self.pulsante3.Hide()
         self.pulsante4.Hide()
         self.text.SetLabel("")
+        self.nome2.SetFocus()
         if v == True:
             self.nome2.Show()
             self.pulsante2.Show()
@@ -134,6 +136,7 @@ class Scelta(wx.Frame):
         self.pulsante2.Hide()
         self.pulsante4.Hide()
         self.text.SetLabel("")
+        self.nome3.SetFocus()
         if v == True:
             self.nome3.Show()
             self.pulsante3.Show()
@@ -157,6 +160,7 @@ class Scelta(wx.Frame):
         self.pulsante2.Hide()
         self.pulsante3.Hide()
         self.text.SetLabel("")
+        self.nome4.SetFocus()
         if v == True:
             self.nome4.Show()
             self.pulsante4.Show()

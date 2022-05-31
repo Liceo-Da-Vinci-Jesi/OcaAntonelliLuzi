@@ -17,7 +17,7 @@ class Tabellone(wx.Frame):
         self.listaGiocatori = []
         self.turno = 0
         
-        self.domanda=Domanda()
+        
         
         header=wx.StaticText(self,label="", size=(1280,20),pos=(0,0))
         header.SetBackgroundColour("#53c653")
@@ -122,10 +122,11 @@ class Tabellone(wx.Frame):
                 return
     
     def controllo(self):
+        self.domanda=Domanda()
         c=self.giocatore.casella
         if c in caselle.listaBiografia:
             if c==1:
-                m=len(domandeRecanati)
+                m=len(ElencoDomande.domandeRecanati)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandeRecanati[n]
                 self.domanda.Show()
@@ -134,10 +135,10 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandeRecanati.remove(domandaEstratta)
+                ElencoDomande.domandeRecanati.remove(domandaEstratta)
                 return
             if c==8:
-                m=len(domandeRoma)
+                m=len(ElencoDomande.domandeRoma)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandeRoma[n]
                 self.domanda.Show()
@@ -146,10 +147,10 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandeRoma.remove(domandaEstratta)
+                ElencoDomande.domandeRoma.remove(domandaEstratta)
                 return
             if c==14:
-                m=len(domandeMilano)
+                m=len(ElencoDomande.domandeMilano)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandeMilano[n]
                 self.domanda.Show()
@@ -158,10 +159,10 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandeMilano.remove(domandaEstratta)
+                ElencoDomande.domandeMilano.remove(domandaEstratta)
                 return
             if c==21:
-                m=len(domandeBologna)
+                m=len(ElencoDomande.domandeBologna)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandeBologna[n]
                 self.domanda.Show()
@@ -170,10 +171,10 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandeBologna.remove(domandaEstratta)
+                ElencoDomande.domandeBologna.remove(domandaEstratta)
                 return
             if c==27:
-                m=len(domandeFirenze)
+                m=len(ElencoDomande.domandeFirenze)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandeFirenze[n]
                 self.domanda.Show()
@@ -182,10 +183,10 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandeFirenze.remove(domandaEstratta)
+                ElencoDomande.domandeFirenze.remove(domandaEstratta)
                 return
             if c==33:
-                m=len(domandePisa)
+                m=len(ElencoDomande.domandePisa)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandePisa[n]
                 self.domanda.Show()
@@ -194,10 +195,10 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandePisa.remove(domandaEstratta)
+                ElencoDomande.domandePisa.remove(domandaEstratta)
                 return
             if c==39:
-                m=len(domandeNapoli)
+                m=len(ElencoDomande.domandeNapoli)
                 n=random.randint(1,m)
                 domandaEstratta=ElencoDomande.domandeNapoli[n]
                 self.domanda.Show()
@@ -206,13 +207,13 @@ class Tabellone(wx.Frame):
                 self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
                 self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
                 self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-                domandeNapoli.remove(domandaEstratta)
+                ElencoDomande.domandeNapoli.remove(domandaEstratta)
                 return
         if c in caselle.listaInfinito:
             self.giocatore.punteggio+=50
             return
         if c in caselle.listaCanti:
-            m=len(domandeCanti)
+            m=len(ElencoDomande.domandeCanti)
             n=random.randint(1,m)
             domandaEstratta=ElencoDomande.domandeCanti[n]
             self.domanda.Show()
@@ -221,10 +222,10 @@ class Tabellone(wx.Frame):
             self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
             self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
             self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-            domandeCanti.remove(domandaEstratta)
+            ElencoDomande.domandeCanti.remove(domandaEstratta)
             return
         if c in caselle.listaOperette:
-            m=len(domandeOperette)
+            m=len(ElencoDomande.domandeOperette)
             n=random.randint(1,m)
             domandaEstratta=ElencoDomande.domandeOperette[n]
             self.domanda.Show()
@@ -233,10 +234,10 @@ class Tabellone(wx.Frame):
             self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
             self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
             self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-            domandeOperette.remove(domandaEstratta)
+            ElencoDomande.domandeOperette.remove(domandaEstratta)
             return
         if c in caselle.listaZibaldone:
-            m=len(domandeZibaldone)
+            m=len(ElencoDomande.domandeZibaldone)
             n=random.randint(1,m)
             domandaEstratta=ElencoDomande.domandeZibaldone[n]
             self.domanda.Show()
@@ -245,7 +246,7 @@ class Tabellone(wx.Frame):
             self.domanda.risposta2.SetLabel(domandaEstratta["Risposta b"])
             self.domanda.risposta3.SetLabel(domandaEstratta["Risposta c"])
             self.domanda.giusta.SetLabel(domandaEstratta["Risposta giusta"])
-            domandeZibaldone.remove(domandaEstratta)
+            ElencoDomande.domandeZibaldone.remove(domandaEstratta)
             return
         if c in caselle.listaSiepe:
             if self.giocatore.punteggio < 50:
